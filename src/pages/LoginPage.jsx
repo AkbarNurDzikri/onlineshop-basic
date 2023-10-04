@@ -6,22 +6,22 @@ import LoginHandler from '../components/bodies/auth/LoginHandler';
 
 function LoginPage() {
   const label = {
-    email: 'Email',
+    username: 'Username',
     password: 'Password'
   }
 
   const type = {
-    email: 'email',
+    username: 'text',
     'password': 'password'
   }
 
   const placeholder = {
-    email: 'example.com',
-    password: 'rahasia'
+    username: 'super-admin',
+    password: '******'
   }
 
   const name = {
-    email: 'email',
+    username: 'username',
     password: 'password'
   }
 

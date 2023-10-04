@@ -4,15 +4,17 @@ import { useEffect, useRef } from 'react';
 
 const LoginBody = (props) => {
   const {type, name, label, placeholder, textButton, buttonType, onSubmit} = props;
-  const inputEmail = useRef(null);
+  const inputUsername = useRef(null);
+
   useEffect(() => {
-    inputEmail.current.focus();
+    inputUsername.current.focus();
   }, [])
+
   return (
     <>
       <Form onSubmit={onSubmit}>
-        <label htmlFor={name.email}>{label.email}</label>
-        <Form.Control type={type.email} name={name.email} id={name.email} placeholder={placeholder.email} autoComplete='off' ref={inputEmail} />
+        <label htmlFor={name.username}>{label.username}</label>
+        <Form.Control type={type.username} name={name.username} id={name.username} placeholder={placeholder.username} autoComplete='off' ref={inputUsername} />
 
         <label htmlFor={name.password} className='mt-3'>{label.password}</label>
         <Form.Control type={type.password} name={name.password} id={name.password} placeholder={placeholder.password} autoComplete='off' />
