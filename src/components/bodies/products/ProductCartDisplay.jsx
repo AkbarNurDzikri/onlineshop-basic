@@ -1,7 +1,7 @@
 import products from "../../../utils/data";
 
 const ProductCartDisplay = (props) => {
-  const {cart, totalAmount, displayTotalAmount} = props;
+  const {cart, totalAmount, displayTotalAmount, getProductsAPI} = props;
   let no = 1;
   
   return (
@@ -16,13 +16,15 @@ const ProductCartDisplay = (props) => {
             <th>Qty</th>
             <th>Amount</th>
           </tr>
-          {products.length > 0 &&
+          {/* {products.length > 0 && */}
+          {getProductsAPI.length > 0 &&
             cart.map((item) => {
-              const product = products.find((product) => product.id === item.id);
+              // const product = products.find((product) => product.id === item.id);
+              const product = getProductsAPI.find((product) => product.id === item.id);
               return (
                 <tr key={product.id}>
                   <td>{no++}</td>
-                  <td>{product.title}</td>
+                  <td>{product.title.substring(0, 10)}...</td>
                   <td>{product.price.toLocaleString('id-ID', {style: 'currency', currency: 'IDR'})}</td>
                   <td>{item.qty}</td>
                   <td className="text-end">{(item.qty * product.price).toLocaleString('id-ID', {style: 'currency', currency: 'IDR', minimumFractionDigits: 0})}</td>

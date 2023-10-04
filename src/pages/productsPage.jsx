@@ -23,7 +23,8 @@ const ProductPage = () => {
   useEffect(() => {
     if(cart.length > 0) {
       const sum = cart.reduce((acc, item) => {
-        const product = products.find(product => product.id === item.id);
+        // const product = products.find(product => product.id === item.id);
+        const product = getProductsAPI.find((product) => product.id === item.id);
         return acc + product.price * item.qty;
       }, 0);
   
@@ -71,7 +72,7 @@ const ProductPage = () => {
                   <Card>
                     <Card.Body>
                       <ProductImage image={product.image} />
-                      <ProductDetails category={product.category} title={product.title} description={product.description} />
+                      <ProductDetails title={product.title} description={product.description} />
                       <Row>
                         <ProductPrice price={product.price.toLocaleString('id-ID', {style: 'currency', currency: 'IDR', minimumFractionDigits: 0})} />
                         <ProductCartHandler id={product.id} setCart={setCart} cart={cart} setTotalAmount={setTotalAmount} totalAmount={totalAmount}/>
@@ -85,7 +86,7 @@ const ProductPage = () => {
           <Col md={4} className='my-1'>
             <Card>
               <Card.Body className='text-center'>
-                <ProductCartDisplay displayTotalAmount={displayTotalAmount} cart={cart} totalAmount={totalAmount} />
+                <ProductCartDisplay getProductsAPI={getProductsAPI} displayTotalAmount={displayTotalAmount} cart={cart} totalAmount={totalAmount} />
               </Card.Body>
             </Card>
           </Col>
